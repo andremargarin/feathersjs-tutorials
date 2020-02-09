@@ -26,7 +26,7 @@ class MessageService {
 const app = express(feathers())
 
 app.use(express.json());
-app.use(express.urlencoded({extented: true}));
+app.use(express.urlencoded({extended: true}));
 app.use(express.static(__dirname));
 
 app.configure(express.rest());
@@ -40,7 +40,7 @@ app.on('connection', connection => {
 });
 
 app.publish(data => {
-  app.channel('everybody');
+  return app.channel('everybody');
 });
 
 app.listen(3030).on('listening', () => {
